@@ -944,29 +944,29 @@ body {{
 
 <div id="loginModal">
     <div class="login-box">
-        <h2>🕷️ موبي الذكي 🕷️</h2>
-        <p>أدخل رمز الدخول للمتابعة</p>
-        <input type="text" id="accessCodeInput" placeholder="أدخل رمز الدخول..." autocomplete="off">
-        <button id="loginBtn">🚀 دخول 🚀</button>
+        <h2>Моби</h2>
+        <p>Ваш код</p>
+        <input type="text" id="accessCodeInput" placeholder="G009..." autocomplete="off">
+        <button id="loginBtn">💀</button>
         <div id="loginError" class="error-message"></div>
     </div>
 </div>
 
 <div class="container" id="chatContainer" style="display: none;">
     <div class="header">
-        <h1>✨ موبي - الذكاء الاصطناعي ✨</h1>
-        <p>🚀 مساعدك الذكي في كل وقت ومكان 🚀</p>
+        <h1>Моби - абсолютное зло</h1>
+        <p>Ваш Моби</p>
     </div>
     <div class="chat-box" id="chatBox">
         <div class="message bot">
             <div class="message-content">
-                مرحباً! 👋 أنا موبي، بوت الذكاء الاصطناعي الخاص بك. كيف يمكنني مساعدتك اليوم؟ ✨
+                Привет, маленький панк
             </div>
         </div>
     </div>
     <div class="input-area">
-        <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." autocomplete="off"/>
-        <button id="sendBtn"> إرسال </button>
+        <input type="text" id="messageInput" placeholder="Ваше сообщение..." autocomplete="off"/>
+        <button id="sendBtn"> отправлять </button>
     </div>
 </div>
 
@@ -1048,7 +1048,7 @@ accessCodeInput.addEventListener('keypress', (e) => {{
 async function verifyCode() {{
     const code = accessCodeInput.value.trim();
     if (!code) {{
-        loginError.textContent = 'يرجى إدخال رمز الدخول';
+        loginError.textContent = 'Введите свой код';
         return;
     }}
     
@@ -1074,12 +1074,12 @@ async function verifyCode() {{
             chatContainer.style.display = 'flex';
             messageInput.focus();
         }} else {{
-            loginError.textContent = data.error || 'رمز غير صالح';
+            loginError.textContent = data.error || 'Неверный код';
             accessCodeInput.value = '';
         }}
     }} catch (error) {{
         console.error('Error:', error);
-        loginError.textContent = 'حدث خطأ في الاتصال';
+        loginError.textContent = 'Нет контакта';
     }}
     
     loginBtn.disabled = false;
@@ -1135,7 +1135,7 @@ async function sendMessage() {{
     }} catch (error) {{
         console.error('Error:', error);
         typingIndicator.remove();
-        addMessage('عذراً، حدث خطأ في الاتصال. حاول مرة أخرى. 😔', 'bot');
+        addMessage('Нет контакта', 'bot');
     }}
     
     messageInput.disabled = false;
@@ -1172,7 +1172,7 @@ def health_check():
     return jsonify({{"status": "healthy", "protected": True}})
 
 if __name__ == '__main__':
-    print("🚀 بدء تشغيل موبي المحمي...")
+    print("Моби...")
     
     # تحقق من وجود BOT_TOKEN
     if not BOT_TOKEN:
