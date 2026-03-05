@@ -189,10 +189,10 @@ def get_ai_response(text):
         res = requests.get(f"https://sii3.top/api/deepseek.php?v3={text}", timeout=10)
         res.raise_for_status()
         data = res.json()
-        return data.get("response", "❌ لا يوجد رد من الخادم")
+        return data.get("response", "❌Нет контакта")
     except Exception as e:
         print(f"AI Error: {e}")
-        return "⚠️ عذراً، حدث خطأ في المعالجة"
+        return "⚠️ Произошла ошибка обработки"
 
 @app.route('/api/verify-code', methods=['POST'])
 @verify_api_key
@@ -206,7 +206,7 @@ def verify_code():
         use_access_code(code)
         return jsonify({"valid": True, "session_id": session_id})
     
-    return jsonify({"valid": False, "error": "رمز غير صالح أو منتهي"}), 403
+    return jsonify({"valid": False, "error": "Ваш код недействителен или срок его действия истек"}), 403
 
 @app.route('/api/chat', methods=['POST'])
 @verify_api_key
@@ -217,14 +217,14 @@ def web_chat():
         session_id = data.get('session_id')
         
         if not message:
-            return jsonify({"error": "الرسالة فارغة"}), 400
+            return jsonify({"error": "Писать"}), 400
         
         if not session_id:
-            return jsonify({"error": "يجب تسجيل الدخول أولاً"}), 401
+            return jsonify({"error": "Вы должны войти в систему"}), 401
         
         if not rate_limit_check(session_id):
             return jsonify({
-                "error": "لقد تجاوزت الحد الأقصى للطلبات. حاول مرة أخرى بعد ساعة.",
+                "error": "Превышено максимальное количество заказов. Вернись через час.",
                 "session_id": session_id
             }), 429
         
@@ -240,20 +240,20 @@ def web_chat():
     
     except Exception as e:
         print(f"Error in web_chat: {e}")
-        return jsonify({"error": "حدث خطأ في الخادم"}), 500
+        return jsonify({"error": "Произошла ошибка обработки"}), 500
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     user_id = message.from_user.id
     
     if is_banned(user_id):
-        bot.reply_to(message, "❌ تم حظرك من استخدام البوت.")
+        bot.reply_to(message, "Вы были заблокированы.")
         return
         
     welcome_text = """
-🌹 أهلاً وسهلاً بك في موبي!
+Добро пожаловать в толпу абсолютного зла!
 
-أنا بوت الذكاء الاصطناعي، يمكنك محاورتي في أي موضوع.
+Я Моби.
 
 📋 الأوامر المتاحة:
 /help - عرض المساعدة
