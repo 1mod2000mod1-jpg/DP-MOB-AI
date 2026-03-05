@@ -15,7 +15,7 @@ CORS(app)
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 
-ADMINS = [6521966233]
+ADMINS = [6154678499]
 API_SECRET_KEY = os.environ.get('API_SECRET_KEY', secrets.token_urlsafe(32))
 
 def init_db():
