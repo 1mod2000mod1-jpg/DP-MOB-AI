@@ -12,7 +12,7 @@ from functools import wraps
 app = Flask(__name__)
 CORS(app)
 
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = os.environ.get('8684270971:AAHnyxaIC3oDBAUP-C0nvT8JIHlI88MqMaQ')
 bot = telebot.TeleBot(BOT_TOKEN)
 
 ADMINS = [6154678499]
